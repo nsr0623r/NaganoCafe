@@ -1,0 +1,39 @@
+<h1>Admin::Items#index</h1>
+<!--管理者：商品一覧-->
+<div class="container">
+  <h4>商品一覧</h4>
+
+  <table class="item-content">
+    <thead>
+      <tr>
+        <td>商品ID</td>
+        <td>商品名</td>
+        <td>税抜価格</td>
+        <td>ジャンル</td>
+        <td>ステータス</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td>
+          <%= link_to admin_item_path(item) do %>
+            <%= item.name %>
+          <% end %>
+        </td>
+        <td><%= item.price %></td>
+        <td><%= item.genre.name %></td>
+        <td>
+          <% if item.is_active == true %>
+            <span>販売中</span>
+          <% else item.is_active != true %>
+            <span>販売停止中</span>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,49 @@
+<h1>Admin::Customers#show</h1>
+<!--管理者：顧客詳細画面-->
+<div class="container">
+  <h4><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細</h4>
+  
+  <div class="customer-container">
+    <p>
+      <span>会員ID</span>
+      <%= @customer.id %>
+    </p>
+    <p>
+      <span>氏名</span>
+      <%= @customer.first_name %>
+      <%= @customer.last_name %>
+    </p>
+    <p>
+      <span>フリガナ</span>
+      <%= @customer.first_name_kana %>
+      <%= @customer.last_name_kana %>
+    </p>
+    <p>
+      <span>郵便番号</span>
+      <%= @customer.postal_code %>
+    </p>
+    <p>
+      <span>住所</span>
+      <%= @customer.address %>
+    </p>
+    <p>
+      <span>電話番号</span>
+      <%= @customer.telephone_number %>
+    </p>
+    <p>
+      <span>メールアドレス</span>
+      <%= @customer.email %>
+    </p>
+    <p>
+      <span>会員ステータス</span>
+      <% if @customer.is_deleted == false %>
+        有効
+      <% else @customer.is_deleted != false %>
+        退会
+      <% end %>
+    </p>
+  </div>
+  <div>
+    <%= link_to '編集する', edit_admin_customer_path %>
+  </div>
+</div>

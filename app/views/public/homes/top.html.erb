@@ -1,0 +1,31 @@
+<h1>Public::Homes#top</h1>
+<!--顧客：トップページ-->
+<div class="container">
+  <!--ジャンル検索：部分テンプレート-->
+  
+  <div class="text-content">
+    <p>
+      ようこそ、ながのCAFEへ！<br>
+      このサイトは、ケーキ販売のECサイトになります。<br>
+      会員でない方も商品の閲覧はできますが、<br>
+      購入には会員登録が必要になります。
+    </p>
+  </div>
+  
+  <div class="item-container">
+    <h3>新着商品</h3>
+    <div class="item-box">
+      <% @items.each do |item| %>
+      <p>
+        <% if item.image.attached? %>
+          <%= image_tag item.image, size: "100x100" %>
+        <% else %>
+          <%= image_tag 'default-image', size: "100x100" %>
+        <% end %>
+      </p>
+      <p><%= item.name %></p>
+      <p><%= item.price %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

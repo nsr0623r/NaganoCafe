@@ -1,0 +1,40 @@
+<h1>Admin::Items#show</h1>
+<!--管理者：商品詳細画面-->
+<div class="container">
+  <h4>商品詳細</h4>
+
+  <div class="item-content">
+    <div class="item-image">
+      <%= image_tag @item.image, size: "200x200" %>
+    </div>
+
+    <div class="item-detail">
+      <p>
+        <span>商品名</span>
+        <%= @item.name %>
+      </p>
+      <p>
+        <span>商品説明</span>
+        <%= @item.introduction %>
+      </p>
+      <p>
+        <span>ジャンル</span>
+        <%= @item.genre.name %>
+      </p>
+      <p>
+        <span>税込価格(税抜価格)</span>
+        <%= (@item.price * 1.1).floor %>
+        <span>(<%= @item.price %>)円</span>
+      </p>
+      <p>
+        <span>販売ステータス</span>
+        <% if @item.is_active == true %>
+          販売中
+        <% else @item.is_active != true %>
+          販売停止中
+        <% end %>
+      </p>
+      <%= link_to '編集する', edit_admin_item_path(@item) %>
+    </div>
+  </div>
+</div>

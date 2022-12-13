@@ -1,0 +1,41 @@
+<h1>Admin::Items#edit</h1>
+<!--管理者：商品編集画面-->
+<div class="container">
+  <h4>商品編集</h4>
+  
+  <div class="item-edit-content">
+    <%= form_with model: @item, url: admin_item_path(@item) do |f| %>
+      <p>
+        <%= f.label '商品画像' %>
+        <%= f.file_field :image, accept: "image/*" %>
+      </p>
+      <p>
+        <%= f.label '商品名' %>
+        <%= f.text_field :name, autofocus: true %>
+      </p>
+      <p>
+        <%= f.label '商品説明' %>
+        <%= f.text_area :introduction %>
+      </p>
+      <p>
+        <%= f.label 'ジャンル' %>
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "--選択して下さい--"} %>
+      </p>
+      <p>
+        <%= f.label '税抜価格' %>
+        <%= f.text_field :price %>
+        <span>円</span>
+      </p>
+      <p>
+        <span>販売ステータス</span>
+          <%= f.radio_button :is_active, true %>
+          <%= f.label :is_active, '販売中', value: true %>
+          <%= f.radio_button :is_active, false %>
+          <%= f.label :is_active, '販売停止中', value: false %>
+      </p>
+      <p>
+        <%= f.submit '変更を保存' %>
+      </p>
+    <% end %>
+  </div>
+</div>

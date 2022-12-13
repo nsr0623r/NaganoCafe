@@ -1,2 +1,39 @@
 <h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<!--顧客：顧客の登録情報編集画面-->
+<div class="container">
+  <h2>会員情報編集</h2>
+  
+  <div class="customer-content">
+    <%= form_with model: @customer do |f| %>
+      <p>
+        <%= f.label '氏名' %>
+        <%= f.text_field :first_name %><%= f.text_field :last_name %>
+      </p>
+      <p>
+        <%= f.label 'フリガナ' %>
+        <%= f.text_field :first_name_kana %><%= f.text_field :last_name_kana %>
+      </p>
+      <p>
+        <%= f.label '郵便番号' %>
+        <%= f.text_field :postal_code %>
+      </p>
+      <p>
+        <%= f.label '住所' %>
+        <%= f.text_field :address %>
+      </p>
+      <p>
+        <%= f.label '電話番号' %>
+        <%= f.text_field :telephone_number %>
+      </p>
+      <p>
+        <%= f.label 'メールアドレス' %>
+        <%= f.text_field :email %>
+      </p>
+      <p>
+        <%= f.submit '編集内容を保存' %>
+        <%= link_to '退会する', customer_unsubscribe_path(@customer) %>
+      </p>
+    <% end %>
+  </div>
+  
+</div>

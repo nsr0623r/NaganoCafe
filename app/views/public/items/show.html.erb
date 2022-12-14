@@ -1,2 +1,22 @@
 <h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<!--顧客：商品詳細ページ-->
+<div class="container">
+  <!--ジャンル検索：部分テンプレート-->
+
+  <!--商品詳細-->
+  <div class="item-show-content">
+    <div>
+    <% if @item.image.attached? %>
+      <%= image_tag @item.image, size: "100x100" %>
+    <% else %>
+      <%= image_tag 'default-image', size: "100x100" %>
+    <% end %>
+    </div>
+    <div>
+      <h3><%= @item.name %></h3>
+      <p><%= @item.introduction %></p>
+      <p>￥<%= (@item.price * 1.1).floor.to_s(:delimited) %>(税込)</p>
+      <p><%= f.select :amount, *[1..10] %></p>
+    </div>
+  </div>
+</div>

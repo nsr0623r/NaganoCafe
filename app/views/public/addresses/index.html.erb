@@ -2,12 +2,12 @@
 <!--顧客：配送先登録/一覧-->
 <div class="container">
   <h2>配送先登録/一覧</h2>
-  
+
   <div class="address-content">
     <%= form_with model: @address, url: addresses_path do |f| %>
       <p>
         <%= f.label '郵便番号(ハイフンなし)' %>
-        <%= f.text_field :postal_code, autofocus: true %>
+        <%= f.text_field :postal_code_string %>
       </p>
       <p>
         <%= f.label '住所' %>
@@ -20,7 +20,7 @@
       </p>
     <% end %>
   </div>
-  
+
   <table>
     <thead>
       <tr>
@@ -30,7 +30,7 @@
         <td></td>
       </tr>
     </thead>
-    
+
     <tbody>
       <% @addresses.each do |address| %>
       <tr>
@@ -38,8 +38,8 @@
         <td><%= address.address %></td>
         <td><%= address.name %></td>
         <td>
-          <%#= link_to '編集する', edit_address_path(@address.id) %>
-          <%#= link_to '削除する', addresses_path, method: delete %>
+          <%#= link_to '編集する', edit_address_path(@address) %>
+          <%#= link_to '削除する', address_path, method: :delete %>
         </td>
       </tr>
       <% end %>

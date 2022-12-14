@@ -1,2 +1,27 @@
 <h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<!--顧客：商品一覧画面-->
+<div class="container">
+  <!--ジャンル検索：部分テンプレート-->
+
+  <!--商品一覧-->
+  <div class="item-content">
+    <h2>
+      商品一覧
+      (全件)
+    </h2>
+
+    <div class="item-list">
+      <% @items.each do |item| %>
+      <p>
+        <% if item.image.attached? %>
+          <%= image_tag item.image, size: "100x100" %>
+        <% else %>
+          <%= image_tag 'default-image', size: "100x100" %>
+        <% end %>
+      </p>
+      <p><%= item.name %></p>
+      <p>￥<%= item.price.to_s(:delimited) %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -13,10 +13,12 @@
     <div class="item-list">
       <% @items.each do |item| %>
       <p>
-        <% if item.image.attached? %>
-          <%= image_tag item.image, size: "100x100" %>
-        <% else %>
-          <%= image_tag 'default-image', size: "100x100" %>
+        <%= link_to item_path(item.id) do %> 
+          <% if item.image.attached? %>
+            <%= image_tag item.image, size: "100x100" %>
+          <% else %>
+            <%= image_tag 'default-image', size: "100x100" %>
+          <% end %>
         <% end %>
       </p>
       <p><%= item.name %></p>

@@ -18,10 +18,12 @@
       <p>￥<%= (@item.price * 1.1).floor.to_s(:delimited) %>(税込)</p>
       
       <!--カート内商品へ送る内容-->
-      <%= form_with model: @cart_item, url: cart_items_path do |f| %>
-        <%= f.hidden_field :item_id %>
-        <%= f.select :amount, *[1..10] %>
-        <%= f.submit 'カートに入れる' %>
+      <% if @item.is_active == true %>
+        <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.select :amount, *[1..10] %>
+          <%= f.submit 'カートに入れる' %>
+        <% end %>
       <% end %>
     </div>
   </div>

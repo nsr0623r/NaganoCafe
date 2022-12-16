@@ -1,2 +1,65 @@
 <h1>Public::Orders#confirm</h1>
 <!--顧客：注文情報確認画面-->
+<div class="container">
+  <h2>注文情報確認</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+      </tr>
+      <% total = 0 %>
+    </thead>
+
+    <tbody>
+      <% if current_customer.cart_items.present? %>
+        <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td>
+            <% if cart_item.item.image.attached? %>
+              <%= image_tag cart_item.item.image, size: "100x100" %>
+            <% else %>
+              <%= image_tag 'default-image', size: "100x100" %>
+            <% end %>
+            <%= cart_item.item.name %>
+          </td>
+          <td><%= (cart_item.item.price * 1.1).floor %></td>
+          <td><%= cart_item.amount %></td>
+          <% total += (cart_item.item.price * 1.1).floor * cart_item.amount %>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr>
+        <th>送料</th>
+        <th>商品合計</th>
+        <th>請求金額</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr>
+        <td>800</td>
+        <td><%= total %></td>
+        <td>
+          <% sum = total + 800 %>
+          <%= sum %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div>
+    <p>
+      <strong>支払方法</strong>
+      
+    </p>
+  </div>
+</div>

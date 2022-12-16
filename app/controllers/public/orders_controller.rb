@@ -5,6 +5,7 @@ class Public::OrdersController < ApplicationController
 
   # 注文情報確認画面
   def confirm
+    @cart_items = CartItem.all
   end
 
   # 注文完了画面

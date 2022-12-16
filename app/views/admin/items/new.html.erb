@@ -28,10 +28,10 @@
       </p>
       <p>
         <%= f.label '販売ステータス' %>
-        <%= f.label :is_active == true, '販売中', value: 1 %>
-        <%= f.radio_button :is_active, 1 %>
-        <%= f.label :is_active != true, '販売停止中', value: 2 %>
-        <%= f.radio_button :is_active, 2 %>
+        <%= f.label :is_active, '販売中', value: true %>
+        <%= f.radio_button :is_active, true %>
+        <%= f.label :is_active, '販売停止中', value: false %>
+        <%= f.radio_button :is_active, false %>
       </p>
       <p>
         <%= f.submit '新規登録' %>

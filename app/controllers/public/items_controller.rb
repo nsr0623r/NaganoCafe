@@ -1,7 +1,7 @@
 class Public::ItemsController < ApplicationController
   # 顧客：商品一覧
   def index
-    @items = Item.all
+    @items = Item.page(params[:page])
   end
 
   # 顧客：商品詳細

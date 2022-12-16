@@ -7,7 +7,7 @@
   <div class="item-content">
     <h2>
       商品一覧
-      (全件)
+      (全<%= @items.count %>件)
     </h2>
 
     <div class="item-list">
@@ -24,6 +24,7 @@
       <p><%= item.name %></p>
       <p>￥<%= item.price.to_s(:delimited) %></p>
       <% end %>
+      <%= paginate @items %>
     </div>
   </div>
 </div>

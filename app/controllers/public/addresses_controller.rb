@@ -29,7 +29,7 @@ class Public::AddressesController < ApplicationController
 
   # 配送先の削除
   def destroy
-    @address = Address(params[:id])
+    @address = Address.find(params[:id])
     @address.destroy
     redirect_to addresses_path
   end

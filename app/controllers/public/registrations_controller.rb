@@ -4,9 +4,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-  # def after_sign_in_path_for(resources)
-    # customer_my_page_path
-  # end
+  def after_sign_in_path_for(resources)
+    customer_my_page_path(resources)
+  end
 
   def after_sign_out_path_for(resources)
     root_path

@@ -1,16 +1,16 @@
 <h1>Admin::Items#index</h1>
 <!--管理者：商品一覧-->
 <div class="container">
-  <h4>商品一覧</h4>
+  <h4 class="bg-secondary">商品一覧</h4>
 
-  <table class="item-content">
-    <thead>
+  <table class="table">
+    <thead class="thead-light">
       <tr>
-        <td>商品ID</td>
-        <td>商品名</td>
-        <td>税抜価格</td>
-        <td>ジャンル</td>
-        <td>ステータス</td>
+        <th><strong>商品ID</strong></th>
+        <th><strong>商品名</strong></th>
+        <th><strong>税抜価格</strong></th>
+        <th><strong>ジャンル</strong></th>
+        <th><strong>ステータス</strong></>
       </tr>
     </thead>
 
@@ -19,21 +19,24 @@
       <tr>
         <td><%= item.id %></td>
         <td>
-          <%= link_to admin_item_path(item) do %>
+          <ins>
+          <%= link_to admin_item_path(item), class: "border_bottom text-dark" do %>
             <%= item.name %>
           <% end %>
+          </ins>
         </td>
         <td><%= item.price %></td>
         <td><%= item.genre.name %></td>
         <td>
           <% if item.is_active == true %>
-            <span>販売中</span>
+            <strong class="text-success">販売中</span>
           <% else item.is_active != true %>
-            <span>販売停止中</span>
+            <strong class="text-black-50">販売停止中</span>
           <% end %>
         </td>
       </tr>
       <% end %>
+      <%= paginate @items %>
     </tbody>
   </table>
 </div>

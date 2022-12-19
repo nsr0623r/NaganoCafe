@@ -59,7 +59,15 @@
   <div>
     <p>
       <strong>支払方法</strong>
-      
+      <h4><%= @order.payment_method_i18n %></h4>
+    </p>
+    <p>
+      <strong>お届け先</strong>
+      <h4>
+        <%= @order.postal_code_string %>
+        <%= @order.address %>
+        <%= @order.name %>
+      </h4>
     </p>
   </div>
 </div>

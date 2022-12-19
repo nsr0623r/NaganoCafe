@@ -16,7 +16,7 @@ class Admin::ItemsController < ApplicationController
 
   # 商品一覧
   def index
-    @items = Item.all
+    @items = Item.page(params[:page])
   end
 
   # 商品詳細画面

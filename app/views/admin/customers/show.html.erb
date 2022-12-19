@@ -3,47 +3,51 @@
 <div class="container">
   <h4><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細</h4>
   
-  <div class="customer-container">
-    <p>
-      <span>会員ID</span>
-      <%= @customer.id %>
-    </p>
-    <p>
-      <span>氏名</span>
+  <div class="row">
+    <p class="col-sm-3">会員ID</p>
+    <div class="col-sm-9"><%= @customer.id %></div>
+  </div>
+  <div class="row">
+    <p class="col-sm-3">氏名</p>
+    <div class="col-sm-9">
       <%= @customer.first_name %>
       <%= @customer.last_name %>
-    </p>
-    <p>
-      <span>フリガナ</span>
+    </div>
+  </div>
+  <div class="row">
+    <p class="col-sm-3">フリガナ</p>
+    <div class="col-sm-9">
       <%= @customer.first_name_kana %>
       <%= @customer.last_name_kana %>
-    </p>
-    <p>
-      <span>郵便番号</span>
-      <%= @customer.postal_code %>
-    </p>
-    <p>
-      <span>住所</span>
-      <%= @customer.address %>
-    </p>
-    <p>
-      <span>電話番号</span>
-      <%= @customer.telephone_number %>
-    </p>
-    <p>
-      <span>メールアドレス</span>
-      <%= @customer.email %>
-    </p>
-    <p>
-      <span>会員ステータス</span>
+    </div>
+  </div>
+  <div class="row">
+    <p class="col-sm-3">郵便番号</p>
+    <div class="col-sm-9"><%= @customer.postal_code %></div>
+  </div>
+  <div class="row">
+    <p class="col-sm-3">住所</p>
+    <div class="col-sm-9"><%= @customer.address %></div>
+  </div>
+  <div class="row">
+    <p class="col-sm-3">電話番号</p>
+    <div class="col-sm-9"><%= @customer.telephone_number %></div>
+  </div>
+  <div class="row">
+    <p class="col-sm-3">メールアドレス</p>
+    <div class="col-sm-9"><%= @customer.email %></div>
+  </div>
+   <div class="row">
+    <p class="col-sm-3">会員ステータス</p>
+    <div class="col-sm-9">
       <% if @customer.is_deleted == false %>
-        有効
+        <strong class="text-success">有効</span>
       <% else @customer.is_deleted != false %>
-        退会
+        <strong class="text-black-50">退会</span>
       <% end %>
-    </p>
+    </div>
   </div>
-  <div>
-    <%= link_to '編集する', edit_admin_customer_path %>
-  </div>
+  <p class="row">
+    <%= link_to '編集する', edit_admin_customer_path, class: "btn btn-success mx-auto d-block" %>
+  </p>
 </div>

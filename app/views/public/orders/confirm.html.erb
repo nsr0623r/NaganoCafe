@@ -58,16 +58,23 @@
   
   <div>
     <p>
-      <strong>支払方法</strong>
-      <h4><%= @order.payment_method_i18n %></h4>
+      支払方法
+      <%= @order.payment_method_i18n %>
     </p>
     <p>
-      <strong>お届け先</strong>
-      <h4>
-        <%= @order.postal_code_string %>
-        <%= @order.address %>
-        <%= @order.name %>
-      </h4>
+      お届け先
+      <%= @order.address %>
+      <%= @order.name %>
     </p>
   </div>
+  
+  <%= form_with model: @order, url: orders_path do |f| %>
+    <%= f.hidden_field :customer_id, value: current_customer.id %>
+    <%= f.hidden_field :payment_method, value: @order.payment_method %>
+    <%= f.hidden_field :shipping_cost, value: 800 %>
+    <%= f.hidden_field :postal_code, value: total + 800 %>
+    <%= f.hidden_field :name, value: @order.name %>
+    <%= f.hidden_field :order_status, value: "waiting_for_payment" %>
+    <%= f.submit "注文を確定する" %>
+  <% end %>
 </div>

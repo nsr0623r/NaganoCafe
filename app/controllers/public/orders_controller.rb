@@ -43,18 +43,19 @@ class Public::OrdersController < ApplicationController
       @order_details = OrderDetail.new
       @order_details.order_id = order.id
       @order_details.item_id = cart_item.item.id
-      @order_details.price = cart_item.item.price_excluding_tax
-      @order_details.number = cart_item.amount
+      @order_details.price = (cart_item.item.price * 1.1).floor
+      @order_details.amount = cart_item.amount
       @order_details.making_status = 0
       @order_details.save
     end
     
     CartItem.destroy_all
-    redirect_to prders_completed_path
+    redirect_to order_complete_path
   end
 
   # 注文履歴画面
   def index
+    @orders = current_customer.orders
   end
 
   # 注文履歴詳細画面

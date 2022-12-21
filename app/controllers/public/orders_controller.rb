@@ -41,7 +41,7 @@ class Public::OrdersController < ApplicationController
     
     @cart_items.each do |cart_item|
       @order_details = OrderDetail.new
-      @order_details.order_id = order.id
+      @order_details.order_id = @order.id
       @order_details.item_id = cart_item.item.id
       @order_details.price = (cart_item.item.price * 1.1).floor
       @order_details.amount = cart_item.amount
@@ -55,11 +55,13 @@ class Public::OrdersController < ApplicationController
 
   # 注文履歴画面
   def index
-    @orders = current_customer.orders
+    @orders = Order.all
   end
 
   # 注文履歴詳細画面
   def show
+    @order_details = OrderDetail.where(order_id: params[:id])
+    @order = Order.find(params[:id])
   end
 
   private

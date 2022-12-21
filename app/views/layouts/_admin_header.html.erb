@@ -1,5 +1,14 @@
 <header>
-  <div>logo</div>
+  <nav class="navber">
+    <div class="container">
+      <a class="navber-brand" href="/">
+        <span>Logo</span>
+      </a>
+      
+      <ul class="navber-nav ml-auto navber-expendand-lg">
+        
+      </ul>
+    </div>
   
   <div class="right-header">
     <li><%= link_to '商品一覧', admin_items_path %></li>
@@ -8,4 +17,5 @@
     <li><%= link_to 'ジャンル一覧', admin_genres_path %></li>
     <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
   </div>
+  </nav>
 </header>

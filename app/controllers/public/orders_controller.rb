@@ -1,7 +1,7 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
   before_action :cart_item_nil, only: [:new, :create]
-  
+
   # 注文情報入力画面(支払方法・配送先の選択)
   def new
     @order = Order.new
@@ -39,7 +39,7 @@ class Public::OrdersController < ApplicationController
     order = Order.new(order_params)
     order.save
     @cart_items = current_customer.cart_items.all
-    
+
     @cart_items.each do |cart_item|
       @order_details = OrderDetail.new
       @order_details.order_id = order.id
@@ -49,7 +49,7 @@ class Public::OrdersController < ApplicationController
       @order_details.making_status = 0
       @order_details.save!
     end
-    
+
     CartItem.destroy_all
     redirect_to order_complete_path
   end
@@ -57,6 +57,7 @@ class Public::OrdersController < ApplicationController
   # 注文履歴画面
   def index
     @orders = Order.all
+    @order_details = OrderDetail.all
   end
 
   # 注文履歴詳細画面
@@ -70,7 +71,7 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:payment_method, :postal_code, :address, :name, :customer_id, :status, :total_payment, :shipping_cost, :amount)
   end
-  
+
   def cart_item_nil
     cart_items = current_customer.cart_items
     if cart_items.blank?

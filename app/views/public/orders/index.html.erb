@@ -2,7 +2,7 @@
 <!--顧客：注文履歴画面-->
 <div class="container">
   <h3>注文履歴一覧</h3>
-  
+
   <table class="table">
     <thead>
       <tr>
@@ -14,7 +14,7 @@
         <th>注文詳細</th>
       </tr>
     </thead>
-    
+
     <tbody>
       <% @orders.each do |order| %>
       <tr>
@@ -25,7 +25,9 @@
           <%= order.name %>
         </td>
         <td>
-          <%= order.item.name %>
+          <% order.order_details.each do |order_details| %>
+            <%= order_details.item.name %>
+          <% end %>
         </td>
         <td><%= order.total_payment %></td>
         <td><%= order.status_i18n %></td>

@@ -1,4 +1,6 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
+  
   # カート内商品
   def index
     @cart_items = current_customer.cart_items.all
@@ -25,16 +27,6 @@ class Public::CartItemsController < ApplicationController
     cart_item = CartItem.find(params[:id])
     cart_item.update(cart_item_params)
     redirect_to cart_items_path
-  end
-
-  # 商品単価(税込)
-  def with_tax_price
-    (price * 1.1).floor
-  end
-
-  # 小計
-  def subtotal
-    item.with_tax_price * amount
   end
 
   # カート内商品：全削除

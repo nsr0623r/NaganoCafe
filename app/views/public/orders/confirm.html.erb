@@ -76,7 +76,7 @@
     <%= f.hidden_field :total_payment, value: total + 800 %>
     <%= f.hidden_field :address, value: @order.address %>
     <%= f.hidden_field :name, value: @order.name %>
-    <%= f.hidden_field :order_status, value: "waiting_for_payment" %>
+    <%= f.hidden_field :status, value: "waiting_for_payment" %>
     <%= f.submit "注文を確定する" %>
   <% end %>
 </div>

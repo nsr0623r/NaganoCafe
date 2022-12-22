@@ -1,4 +1,6 @@
 class Public::AddressesController < ApplicationController
+  before_action :authenticate_customer!
+  
   # 配送先登録/一覧画面
   def index
     @address = Address.new

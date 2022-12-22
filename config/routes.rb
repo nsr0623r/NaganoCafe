@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     get '/orders/complete' => 'orders#complete', as: 'order_complete'
     resources :orders, only: [:new, :index, :create, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-    resources :customers do
+    resource :customer do
       get 'my_page' => 'customers#show', as: 'my_page'
       get 'information/edit' => 'customers#edit', as: 'information_edit'
       patch 'information' => 'customers#update', as: 'information'

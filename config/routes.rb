@@ -6,12 +6,10 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
-
   # 管理者側devise
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
-
 
   # 顧客側ルーティング
   scope module: :public do
@@ -39,7 +37,7 @@ Rails.application.routes.draw do
 
   # 管理者側ルーティング
   namespace :admin do
-    get 'top' => 'homes#top', as: 'homes_top'
+    root "homes#top"
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :update, :create]
     resources :customers, only: [:index, :show, :edit, :update]

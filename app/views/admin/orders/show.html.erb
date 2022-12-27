@@ -54,14 +54,14 @@
 
     <tbody>
       <% @order_details.each do |order_detail| %>
-      <% total = 0 %>
-      <% total += order_detail.item.with_tax_price %>
+      <% @total = 0 %>
+      <% @total += order_detail.item.with_tax_price %>
       <tr>
         <td><%= order_detail.item.name %></td>
         <td><%= order_detail.item.with_tax_price %></td>
         <td><%= order_detail.amount %></td>
         <td><%= order_detail.price %></td>
-        <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :pacth do |f| %>
+        <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
         <td>
           <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
           <%= f.submit "更新" %>
@@ -71,5 +71,15 @@
       <% end %>
     </tbody>
   </table>
+
+  <div>
+        <th>商品合計</th>
+        <th>送料</th>
+        <th>請求金額合計</th>
+        <td><%= (@order.total_payment - @order.shipping_cost).to_s(:delimited) %></td>
+        <td><%= @order.shipping_cost %></td>
+        <td><%= @order.total_payment.to_s(:delimited) %></td>
+  </div>
+
 
 </div>

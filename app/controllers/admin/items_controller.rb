@@ -7,7 +7,7 @@ class Admin::ItemsController < ApplicationController
   # 商品情報の新規登録
   def create
     @item = Item.new(item_params)
-    if @item.save
+    if @item.save!
       redirect_to admin_items_path
     else
       render :new

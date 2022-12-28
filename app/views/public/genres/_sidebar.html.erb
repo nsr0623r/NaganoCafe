@@ -1,0 +1,13 @@
+<!--顧客：ジャンル検索部分テンプレート-->
+<div class="container">
+  <table>
+    <th>ジャンル検索</th>
+    <td>
+      <% @genres.each do |genre| %>
+        <%= link_to genre_path(genre) do %>
+          <%= genre.name %>
+        <% end %>
+      <% end %>
+    </td>
+  </table>
+</div>

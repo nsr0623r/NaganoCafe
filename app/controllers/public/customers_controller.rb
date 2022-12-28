@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  
+
   # 顧客のマイページ
   def show
     @customer = current_customer
@@ -27,6 +27,10 @@ class Public::CustomersController < ApplicationController
 
   # 顧客の退会処理(ステータスの更新)
   def withdraw
+    @customer = Customer.find(current_customer.id)
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 
   private

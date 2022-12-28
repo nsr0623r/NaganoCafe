@@ -1,5 +1,8 @@
 <!--顧客用ログイン画面-->
 <h2>ログイン</h2>
+<div>
+  <%= notice %>
+</div>
 
 <span>会員の方はこちらからログイン</span>
 <%= form_with model: @customer, url: customer_session_path do |f| %>

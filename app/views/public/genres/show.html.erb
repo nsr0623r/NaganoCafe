@@ -1,0 +1,22 @@
+<h1>Public::Genres#show</h1>
+<!--顧客：ジャンル検索　検索一覧-->
+<div class="container">
+  <h2><%= @genre.name %>一覧</h2>
+  
+  <!--ジャンル商品一覧-->
+  <div>
+    <% @genre.items.each do |item| %>
+    <p>
+     <%= link_to item_path(item.id) do %> 
+      <% if item.image.attached? %>
+        <%= image_tag item.image, size: "100x100" %>
+      <% else %>
+        <%= image_tag 'default-image', size: "100x100" %>
+      <% end %>
+    <% end %>
+    </p>
+    <p><%= item.name %></p>
+    <p>￥<%= item.price.to_s(:delimited) %></p>
+    <% end %>
+  </div>
+</div>

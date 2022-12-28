@@ -15,6 +15,7 @@ class Public::AddressesController < ApplicationController
   # 配送先の登録
   def create
     @address = Address.new(address_params)
+    @address.customer_id = current_customer.id
     @address.save
     redirect_to addresses_path
   end
@@ -22,6 +23,7 @@ class Public::AddressesController < ApplicationController
   # 配送先の更新
   def update
     @address = Address.find(params[:id])
+    @address.customer_id = current_customer.id
     if @address.update(address_params)
       redirect_to addresses_path
     else

@@ -5,9 +5,9 @@ class Public::OrdersController < ApplicationController
   # 注文情報入力画面(支払方法・配送先の選択)
   def new
     @order = Order.new
-    #byebug
     @address = Address.all
     @customer = current_customer
+    # @address = @customer.address.all
   end
 
   # 注文情報確認画面

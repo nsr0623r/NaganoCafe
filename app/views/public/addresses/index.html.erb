@@ -7,7 +7,7 @@
     <%= form_with model: @address, url: addresses_path do |f| %>
       <p>
         <%= f.label '郵便番号(ハイフンなし)' %>
-        <%= f.text_field :postal_code_string %>
+        <%= f.text_field :postal_code %>
       </p>
       <p>
         <%= f.label '住所' %>

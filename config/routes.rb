@@ -16,12 +16,13 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about', as: 'about'
     resources :items, only: [:index, :show]
-    resources :cart_items, only: [:index, :update, :destroy, :create]
+    resources :genres, only: [:show]
     resources :cart_items do
       collection do
         delete 'destroy_all'
       end
     end
+    resources :cart_items, only: [:index, :update, :destroy, :create]
     post '/orders/confirm' => 'orders#confirm', as: 'order_confirm'
     get '/orders/complete' => 'orders#complete', as: 'order_complete'
     resources :orders, only: [:new, :index, :create, :show]

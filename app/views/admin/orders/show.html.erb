@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col">購入者</div>
       <div class="col">
-        <%= link_to admin_customer_path(@order) do %>
+        <%= link_to admin_customer_path(@order.customer_id) do %>
           <%= @order.customer.first_name %><%= @order.customer.last_name %>
         <% end %>
       </div>

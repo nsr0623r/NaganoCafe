@@ -1,31 +1,40 @@
-<h1>Public::Homes#top</h1>
+<!--<h1>Public::Homes#top</h1>-->
 <!--顧客：トップページ-->
 <div class="container">
+  <div class="row">
   <!--ジャンル検索：部分テンプレート-->
-  
-  <div class="text-content">
-    <p>
-      ようこそ、ながのCAFEへ！<br>
-      このサイトは、ケーキ販売のECサイトになります。<br>
-      会員でない方も商品の閲覧はできますが、<br>
-      購入には会員登録が必要になります。
-    </p>
-  </div>
-  
-  <div class="item-container">
-    <h3>新着商品</h3>
-    <div class="item-box">
-      <% @items.each do |item| %>
-      <p>
-        <% if item.image.attached? %>
-          <%= image_tag item.image, size: "100x100" %>
-        <% else %>
-          <%= image_tag 'default-image', size: "100x100" %>
-        <% end %>
-      </p>
-      <p><%= item.name %></p>
-      <p><%= item.price %></p>
-      <% end %>
+    <div class="column col-lg-3">
+    <%= render 'public/genres/sidebar', genres: @genres %>
+    </div>
+
+    <div class="column col-lg-9">
+      <div class="align-items-center justify-content-center d-flex mt-5 pt-5">
+        <p class="border border-dark">
+          ようこそ、ながのCAFEへ！<br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。
+        </p>
+      </div>
+    
+      <div class="mt-2">
+        <h3 class="m-3">新着商品</h3>
+        <div class="d-flex">
+          <% @items.each do |item| %>
+            <div class="mr-3">
+              <p>
+                <% if item.image.attached? %>
+                  <%= image_tag item.image, size: "190x130" %>
+                <% else %>
+                  <%= image_tag 'default-image', size: "190x130" %>
+                <% end %>
+              </p>
+              <p><%= item.name %></p>
+              <p>￥<%= item.price.to_s(:delimited) %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

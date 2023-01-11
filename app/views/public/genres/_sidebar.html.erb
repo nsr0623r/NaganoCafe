@@ -1,13 +1,13 @@
 <!--顧客：ジャンル検索部分テンプレート-->
-<div class="container">
-  <table>
-    <th>ジャンル検索</th>
-    <td>
+<div class="mt-5 border border-dark text-center p-0">
+  <div class="border-bottom border-dark p-2">ジャンル検索</div>
+  <ul class="navbar nav">
+    <li class="nav-item mx-auto d-inline">
       <% @genres.each do |genre| %>
-        <%= link_to genre_path(genre) do %>
+        <%= link_to genre_path(genre), class: "nav-link text-dark" do %>
           <%= genre.name %>
         <% end %>
       <% end %>
-    </td>
-  </table>
+    </li>
+  </ul>
 </div>

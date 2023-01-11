@@ -12,25 +12,29 @@
 
   <body>
     <!--管理者用ヘッダー：部分テンプレート引用部-->
-    <header>
-    <nav class="navber navber-fixed-top navber-inverse">
+    <header class="sticky-top">
+    <nav class="navber navbar-expand-md bg-white pt-2">
       <div class="container">
         <div class="row">
-          <!--ショップロゴ-->
-          <a class="nav navber-nav navber-left" href="/">
-            <span>Logo</span>
-          </a>
+          <ul class="nav navbar-nav mr-auto">
+            <!--ショップロゴ-->
+            <h2>
+            <%= link_to root_path, class: "nav navber-nav  text-dark" do %>
+                <%= image_tag 'パティシエ.jpg', :size => '45x45' %>Nagano Cake<%= image_tag 'ケーキ.jpg', :size => '45x45' %>
+            <% end %>
+            </h2>
+          </ul>
           
-          <ul class="nav navber-nav navber-right">
+          <ul class="nav navber-nav">
             <% if admin_signed_in? %>
               <%= render 'layouts/admin_header' %>
             <% elsif customer_signed_in? %>
               <%= render 'layouts/customer_header' %>
             <% else %>
-              <li class="nav-item mr-3"><%= link_to 'About', about_path %></li>
-              <li class="nav-item mr-3"><%= link_to '商品一覧', items_path %></li>
-              <li class="nav-item mr-3"><%= link_to '新規登録', new_customer_registration_path %></li>
-              <li class="nav-item mr-3"><%= link_to 'ログイン', new_customer_session_path %></li>
+              <li class="nav-item mr-3"><%= link_to 'About', about_path, class: "btn btn-outline-dark" %></li>
+              <li class="nav-item mr-3"><%= link_to '商品一覧', items_path, class: "btn btn-outline-dark" %></li>
+              <li class="nav-item mr-3"><%= link_to '新規登録', new_customer_registration_path, class: "btn btn-outline-dark" %></li>
+              <li class="nav-item mr-3"><%= link_to 'ログイン', new_customer_session_path, class: "btn btn-outline-dark" %></li>
             <% end %>
           </ul>
         </div>

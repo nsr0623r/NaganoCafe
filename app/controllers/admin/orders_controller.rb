@@ -10,6 +10,7 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = OrderDetail.where(order_id: params[:id])
     if @order.update(order_params)
+      @order_details.update_all(making_status: 0) if @order.status == "waiting_for_paymentcd"
       @order_details.update_all(making_status: 1) if @order.status == "deposit_confirmation"
     end
     redirect_to admin_order_path(@order)

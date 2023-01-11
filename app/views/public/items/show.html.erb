@@ -1,28 +1,36 @@
-<h1>Public::Items#show</h1>
+<!--<h1>Public::Items#show</h1>-->
 <!--顧客：商品詳細ページ-->
 <div class="container">
   <!--ジャンル検索：部分テンプレート-->
+  <div class="row">
+    <div class="column col-lg-3">
+      <%= render 'public/genres/sidebar', genres: @genres %>
+  </div>
 
   <!--商品詳細-->
-  <div class="item-show-content">
-    <div>
+  <div class="m-5 d-flex">
+    <div class="mr-5">
     <% if @item.image.attached? %>
-      <%= image_tag @item.image, size: "100x100" %>
+      <%= image_tag @item.image, size: "300x200" %>
     <% else %>
-      <%= image_tag 'default-image', size: "100x100" %>
+      <%= image_tag 'default-image', size: "300x200" %>
     <% end %>
     </div>
     <div>
-      <h3><%= @item.name %></h3>
-      <p><%= @item.introduction %></p>
-      <p>￥<%= (@item.price * 1.1).floor.to_s(:delimited) %>(税込)</p>
+      <div>
+        <h3><strong><%= @item.name %></strong></h3>
+        <p class="h5"><%= @item.introduction %></p>
+      </div>
+      <div class="mt-5">
+        <p class="mt-5"><strong class="h4">￥<%= (@item.price * 1.1).floor.to_s(:delimited) %></strong>(税込)</p>
+      </div>
       
       <!--カート内商品へ送る内容-->
       <% if @item.is_active == true %>
         <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
           <%= f.hidden_field :item_id, :value => @item.id %>
-          <%= f.select :amount, *[1..10] %>
-          <%= f.submit 'カートに入れる' %>
+          <%= f.select :amount, *[1..10], { include_blank: '個数選択'}, class: "pl-2 pr-2 m-4" %>
+          <%= f.submit 'カートに入れる', class: "btn btn-success" %>
         <% end %>
       <% end %>
     </div>

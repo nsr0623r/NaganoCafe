@@ -1,31 +1,37 @@
-<h1>Public::Items#index</h1>
+<!--<h1>Public::Items#index</h1>-->
 <!--顧客：商品一覧画面-->
 <div class="container">
   <!--ジャンル検索：部分テンプレート-->
-  <%= render 'public/genres/sidebar', genres: @genres %> 
+  <div class="row">
+    <div class="column col-lg-3">
+      <%= render 'public/genres/sidebar', genres: @genres %>
+  </div>
 
   <!--商品一覧-->
-  <div class="item-content">
-    <h2>
-      商品一覧
-      (全<%= @items.count %>件)
-    </h2>
+  <div class="column col-lg-9">
+    <div class="d-flex mt-5">
+      <h2><strong>商品一覧</strong></h2>
+      <p class="mt-3 ml-2">(全<%= @items.count %>件)</p>
+    </div>
 
-    <div class="item-list">
+    <div class="d-flex flex-wrap">
       <% @items.each do |item| %>
+      <div class="mr-3">
       <p>
-        <%= link_to item_path(item.id) do %> 
+        <%= link_to item_path(item.id) do %>
           <% if item.image.attached? %>
-            <%= image_tag item.image, size: "100x100" %>
+            <%= image_tag item.image, size: "190x130" %>
           <% else %>
-            <%= image_tag 'default-image', size: "100x100" %>
+            <%= image_tag 'default-image', size: "190x130" %>
           <% end %>
         <% end %>
       </p>
       <p><%= item.name %></p>
       <p>￥<%= item.price.to_s(:delimited) %></p>
+      </div>
       <% end %>
       <%= paginate @items %>
     </div>
   </div>
+</div>
 </div>

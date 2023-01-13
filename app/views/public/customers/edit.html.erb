@@ -1,38 +1,44 @@
-<h1>Public::Customers#edit</h1>
+<!--<h1>Public::Customers#edit</h1>-->
 <!--顧客：顧客の登録情報編集画面-->
 <div class="container">
-  <h2>会員情報編集</h2>
+  <div class="m-4">
+    <h4 class="d-inline border border-secondary px-3">会員情報編集</h4>
+  </div>
   
-  <div class="customer-content">
-    <%= form_with model: @customer do |f| %>
-      <p>
-        <%= f.label '氏名' %>
-        <%= f.text_field :first_name %><%= f.text_field :last_name %>
-      </p>
-      <p>
-        <%= f.label 'フリガナ' %>
-        <%= f.text_field :first_name_kana %><%= f.text_field :last_name_kana %>
-      </p>
-      <p>
-        <%= f.label '郵便番号' %>
-        <%= f.text_field :postal_code %>
-      </p>
-      <p>
-        <%= f.label '住所' %>
-        <%= f.text_field :address %>
-      </p>
-      <p>
-        <%= f.label '電話番号' %>
-        <%= f.text_field :telephone_number %>
-      </p>
-      <p>
-        <%= f.label 'メールアドレス' %>
-        <%= f.text_field :email %>
-      </p>
-      <p>
-        <%= f.submit '編集内容を保存' %>
-        <%= link_to '退会する', unsubscribe_customer_path %>
-      </p>
+  <%= form_with model: @customer do |f| %>
+    <div class="form-group row">
+        <%= f.label '氏名', class: "col-sm-2 col-form-label" %>
+        <%= f.text_field :first_name, class: "form-control col-sm-2 border-dark mr-5" %>
+        <%= f.text_field :last_name, class: "form-control col-sm-2 border-dark" %>
+    </div>
+    <div class="form-group row">
+        <%= f.label 'フリガナ', class: "col-sm-2 col-form-label" %>
+        <%= f.text_field :first_name_kana, class: "form-control col-sm-2 border-dark mr-5" %>
+        <%= f.text_field :last_name_kana, class: "form-control col-sm-2 border-dark" %>
+    </div>
+    <div class="form-group row">
+        <%= f.label '郵便番号', class: "col-sm-2 col-form-label" %>
+        <%= f.text_field :postal_code, class: "form-control col-sm-2 border-dark" %>
+    </div>
+    <div class="form-group row">
+        <%= f.label '住所', class: "col-sm-2 col-form-label" %>
+        <%= f.text_field :address, class: "form-control col-sm-5 border-dark" %>
+    </div>
+    <div class="form-group row">
+        <%= f.label '電話番号', class: "col-sm-2 col-form-label" %>
+        <%= f.text_field :telephone_number, class: "form-control col-sm-2 border-dark" %>
+    </div>
+    <div class="form-group row">
+        <%= f.label 'メールアドレス', class: "col-sm-2 col-form-label" %>
+        <%= f.text_field :email, class: "form-control col-sm-2 border-dark" %>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-1 mr-5"></div>
+      <div class="col-7">
+        <%= f.submit '編集内容を保存', class: "btn btn-success col-sm-4 ml-3" %>
+      </div>
+        <%= link_to '退会する', unsubscribe_customer_path, class: "btn btn-danger" %>
+    </div>
     <% end %>
   </div>
   

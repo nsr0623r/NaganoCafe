@@ -33,15 +33,17 @@
 
     <tbody>
       <% @addresses.each do |address| %>
-      <tr>
-        <td><%= address.postal_code %></td>
-        <td><%= address.address %></td>
-        <td><%= address.name %></td>
-        <td>
-          <%= link_to '編集する', edit_address_path(address), class: "btn btn-success p-1 mr-3" %>
-          <%= link_to '削除する', address_path(address), method: :delete, class: "btn btn-danger p-1" %>
-        </td>
-      </tr>
+      <% if address.customer == current_customer %>
+        <tr>
+          <td><%= address.postal_code %></td>
+          <td><%= address.address %></td>
+          <td><%= address.name %></td>
+          <td>
+            <%= link_to '編集する', edit_address_path(address), class: "btn btn-success p-1 mr-3" %>
+            <%= link_to '削除する', address_path(address), method: :delete, class: "btn btn-danger p-1" %>
+          </td>
+        </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

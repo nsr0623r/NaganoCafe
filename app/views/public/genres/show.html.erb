@@ -19,17 +19,17 @@
         <p>
           <%= link_to item_path(item.id) do %>
             <% if item.image.attached? %>
-              <%= image_tag item.image, size: "100x100" %>
+              <%= image_tag item.image, size: "190x130" %>
             <% else %>
-              <%= image_tag 'default-image', size: "100x100" %>
+              <%= image_tag 'default-image', size: "190x130" %>
             <% end %>
           <% end %>
         </p>
         <p><%= item.name %></p>
         <p>￥<%= item.price.to_s(:delimited) %></p>
+        </div>
       <% end %>
-      <%= paginate @genre.items %>
-      </div>
+      <%#= paginate @genre %>
     </div>
   </div>
 </div>

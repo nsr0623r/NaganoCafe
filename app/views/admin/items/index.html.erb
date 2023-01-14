@@ -1,45 +1,51 @@
-<h1>Admin::Items#index</h1>
+<!--<h1>Admin::Items#index</h1>-->
 <!--管理者：商品一覧-->
 <div class="container">
-  <h4 class="bg-secondary">商品一覧</h4>
-  <%= link_to new_admin_item_path do %>
-    ＋
-  <% end %>
-
-  <table class="table">
-    <thead class="thead-light">
-      <tr>
-        <th><strong>商品ID</strong></th>
-        <th><strong>商品名</strong></th>
-        <th><strong>税抜価格</strong></th>
-        <th><strong>ジャンル</strong></th>
-        <th><strong>ステータス</strong></>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @items.each do |item| %>
-      <tr>
-        <td><%= item.id %></td>
-        <td>
-          <ins>
-          <%= link_to admin_item_path(item), class: "border_bottom text-dark" do %>
-            <%= item.name %>
-          <% end %>
-          </ins>
-        </td>
-        <td><%= item.price %></td>
-        <td><%= item.genre.name %></td>
-        <td>
-          <% if item.is_active == true %>
-            <strong class="text-success">販売中</span>
-          <% else item.is_active != true %>
-            <strong class="text-black-50">販売停止中</span>
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
+  <div class="m-4">
+    <h4 class="d-inline border border-secondary px-3">商品一覧</h4>
+    <div class="text-right">
+      <%= link_to image_tag("プラスアイコン.jpg", size: "50x50"), new_admin_item_path %>
+    </div>
+  </div>
+  
+  <div class="col-10 ml-5">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th class="col-1"><strong>商品ID</strong></th>
+          <th class="col-4"><strong>商品名</strong></th>
+          <th class="col-2"><strong>税抜価格</strong></th>
+          <th class="col-3"><strong>ジャンル</strong></th>
+          <th class="col-2"><strong>ステータス</strong></>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <% @items.each do |item| %>
+        <tr>
+          <td><%= item.id %></td>
+          <td>
+            <ins>
+            <%= link_to admin_item_path(item), class: "border_bottom text-dark" do %>
+              <%= item.name %>
+            <% end %>
+            </ins>
+          </td>
+          <td><%= item.price.to_s(:delimited) %></td>
+          <td><%= item.genre.name %></td>
+          <td>
+            <% if item.is_active == true %>
+              <strong class="text-success">販売中</span>
+            <% else item.is_active != true %>
+              <strong class="text-black-50">販売停止中</span>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="col-5">
       <%= paginate @items %>
-    </tbody>
-  </table>
+    </div>
+  </div>
 </div>

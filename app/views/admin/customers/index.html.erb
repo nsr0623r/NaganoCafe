@@ -1,7 +1,9 @@
-<h1>Admin::Customers#index</h1>
+<!--<h1>Admin::Customers#index</h1>-->
 <!--管理者：顧客一覧画面-->
 <div class="container">
-  <h4 class="bg-secondary bg-opacity-25 w-75">会員一覧</h4>
+  <div class="m-4">
+    <h4 class="d-inline border border-secondary px-3">会員一覧</h4>
+  </div>
 
   <table class="table w-75 mx-auto">
     <thead class="thead-light">
@@ -18,7 +20,7 @@
       <tr>
         <td><%= customer.id %></td>
         <td>
-          <%= link_to admin_customer_path(customer.id), class: "border_bottom text-dark"  do %>
+          <%= link_to admin_customer_path(customer.id), class: "text-dark border-bottom border-dark"  do %>
             <%= customer.first_name %><%= customer.last_name %>
           <% end %>
         </td>
